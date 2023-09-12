@@ -1,21 +1,24 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import AppHeader from "./components/AppHeader.vue";
+import MainContent from "./components/MainContent.vue";
 
 export default {
   data() {
-    return {
-      title: "Hello world",
-    };
+    return {};
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    AppHeader,
+    MainContent,
+  },
 };
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <div class="container">
+    <AppHeader />
+    <MainContent />
+  </div>
 </template>
 
 <style lang="scss" scoped>
