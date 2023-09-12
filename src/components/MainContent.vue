@@ -1,17 +1,21 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import ListCards from "./ListCards.vue";
 
 export default {
   data() {
     return {};
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    ListCards,
+  },
 };
 </script>
 
-<template></template>
+<template>
+  <main class="bg-warning">
+    <div class="container"></div>
+  </main>
+</template>
 
 <style lang="scss" scoped></style>
