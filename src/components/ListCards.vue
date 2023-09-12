@@ -17,9 +17,9 @@ export default {
 
 <template>
   <section class="container my-2">
-    <div class="row g-2">
+    <div class="row row-cols-2 row-cols-3 row-cols-4">
       <Cards
-        class="col-3"
+        class="col"
         v-for="card in store.yugiCards"
         :key="card.id"
         :card="card"

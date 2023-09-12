@@ -40,10 +40,8 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <AppHeader />
-    <MainContent />
-  </div>
+  <AppHeader />
+  <MainContent />
 </template>
 
 <style lang="scss" scoped></style>
