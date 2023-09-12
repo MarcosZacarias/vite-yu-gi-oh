@@ -15,6 +15,17 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+  <section class="container my-2">
+    <div class="row g-2">
+      <Cards
+        class="col-3"
+        v-for="card in store.yugiCards"
+        :key="card.id"
+        :card="card"
+      />
+    </div>
+  </section>
+</template>
 
 <style lang="scss" scoped></style>

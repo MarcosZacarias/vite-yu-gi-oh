@@ -14,7 +14,9 @@ export default {
 
 <template>
   <main class="bg-warning">
-    <div class="container"></div>
+    <div class="container">
+      <ListCards />
+    </div>
   </main>
 </template>
 
