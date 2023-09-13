@@ -35,6 +35,16 @@ export default {
         const { next_page, previous_page } = response.data.meta;
         store.pages = { next_page, previous_page };
       });
+
+      // .catch((error) => {
+      //   console.error(error);
+      //   store.yugiCards = [];
+      //   store.yugiArchetypes = [];
+      //   store.pages.next_page = null;
+      //   store.pages.previous_page = null;
+      // });
+
+      // .finally(() => {});
     },
     nextPage() {
       if (!store.pages.next_page) {
@@ -56,7 +66,17 @@ export default {
       // console.log(archetypeSelected);
       const apiPath = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${archetypeSelected}`;
       // console.log(apiPath);
-      this.fetchCards(apiPath);
+      // this.fetchCards(apiPath);
+
+      store.pages.next_page = null;
+      store.pages.previous_page = null;
+      axios.get(apiPath).then((response) => {
+        // console.log(response.data);
+        store.yugiCards = response.data.data.map((card) => {
+          const { id, name, archetype, card_images } = card;
+          return { id, name, archetype, card_images };
+        });
+      });
     },
   },
 
