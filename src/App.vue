@@ -78,6 +78,10 @@ export default {
         });
       });
     },
+
+    resetPrint() {
+      this.fetchCards(store.apiUrl);
+    },
   },
 
   created() {
@@ -89,7 +93,7 @@ export default {
 <template>
   <AppHeader />
 
-  <BaseSelect @form-submit="selectArchetype" />
+  <BaseSelect @form-submit="selectArchetype" @form-reset="resetPrint" />
 
   <MainContent @go-prev-page="prevPage()" @go-next-page="nextPage()" />
 </template>

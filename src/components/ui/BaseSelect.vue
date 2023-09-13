@@ -14,7 +14,7 @@ export default {
     };
   },
 
-  emits: ["form-submit"],
+  emits: ["form-submit", "form-reset"],
 
   methods: {
     fetchArchetypes(apiPath) {
@@ -22,6 +22,11 @@ export default {
         console.log(response.data);
         store.yugiArchetypes = response.data;
       });
+    },
+
+    resetInputSelect() {
+      this.archetypeSelect = "";
+      this.$emit(`form-reset`);
     },
   },
 
@@ -33,28 +38,38 @@ export default {
 
 <template>
   <div class="container">
-    <form>
-      <select
-        v-model="archetypeSelect"
-        class="form-select mb-3 archetype-select"
-        aria-label="Default select example"
-      >
-        <option selected>Select archetype</option>
-        <option
-          v-for="archetype in store.yugiArchetypes"
-          :key="archetype.archetype_name"
-          :value="archetype.archetype_name"
-          @click="$emit(`form-submit`, archetypeSelect)"
+    <form class="archetype-select">
+      <div class="input-group">
+        <select
+          v-model="archetypeSelect"
+          id="inputGroupSelect04"
+          class="form-select"
+          aria-label="Example select with button addon"
         >
-          {{ archetype.archetype_name }}
-        </option>
-      </select>
+          <option selected>Select archetype</option>
+          <option
+            v-for="archetype in store.yugiArchetypes"
+            :key="archetype.archetype_name"
+            :value="archetype.archetype_name"
+            @click="$emit(`form-submit`, archetypeSelect)"
+          >
+            {{ archetype.archetype_name }}
+          </option>
+        </select>
+        <button
+          @click="resetInputSelect"
+          class="btn btn-outline-secondary"
+          type="button"
+        >
+          Button
+        </button>
+      </div>
     </form>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .archetype-select {
-  width: 30%;
+  width: 40%;
 }
 </style>
