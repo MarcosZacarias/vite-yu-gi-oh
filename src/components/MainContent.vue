@@ -1,7 +1,8 @@
 <script>
-import ListCards from "./cards/ListCards.vue";
-import Pagination from "./ui/Pagination.vue";
 import { store } from "../data/store";
+
+import Pagination from "./ui/Pagination.vue";
+import ListCards from "./cards/ListCards.vue";
 
 export default {
   data() {

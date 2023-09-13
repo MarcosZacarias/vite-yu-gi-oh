@@ -3,6 +3,8 @@ import axios from "../node_modules/axios";
 import { store } from "../src/data/store";
 
 import AppHeader from "./components/AppHeader.vue";
+import BaseSelect from "./components/ui/BaseSelect.vue";
+
 import MainContent from "./components/MainContent.vue";
 
 export default {
@@ -15,6 +17,7 @@ export default {
   components: {
     AppHeader,
     MainContent,
+    BaseSelect,
   },
 
   methods: {
@@ -58,6 +61,9 @@ export default {
 
 <template>
   <AppHeader />
+
+  <BaseSelect />
+
   <MainContent @go-prev-page="prevPage()" @go-next-page="nextPage()" />
 </template>
 
