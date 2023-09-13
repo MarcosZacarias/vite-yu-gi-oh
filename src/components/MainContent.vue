@@ -1,5 +1,5 @@
 <script>
-import ListCards from "./ListCards.vue";
+import ListCards from "./cards/ListCards.vue";
 import Pagination from "./ui/Pagination.vue";
 import { store } from "../data/store";
 
