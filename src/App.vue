@@ -26,10 +26,27 @@ export default {
           return { id, name, archetype, card_images };
         });
 
-        console.log(cardsData);
-
+        // console.log(cardsData);
         store.yugiCards = cardsData;
+
+        const { next_page, previous_page } = response.data.meta;
+        store.pages = { next_page, previous_page };
       });
+    },
+    nextPage() {
+      if (!store.pages.next_page) {
+        return;
+      } else {
+        this.fetchCards(store.pages.next_page);
+      }
+    },
+
+    prevPage() {
+      if (!store.pages.previous_page) {
+        return;
+      } else {
+        this.fetchCards(store.pages.previous_page);
+      }
     },
   },
 
@@ -41,7 +58,7 @@ export default {
 
 <template>
   <AppHeader />
-  <MainContent />
+  <MainContent @go-prev-page="prevPage()" @go-next-page="nextPage()" />
 </template>
 
 <style lang="scss" scoped></style>
