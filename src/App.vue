@@ -51,6 +51,13 @@ export default {
         this.fetchCards(store.pages.previous_page);
       }
     },
+
+    selectArchetype(archetypeSelected) {
+      // console.log(archetypeSelected);
+      const apiPath = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${archetypeSelected}`;
+      // console.log(apiPath);
+      this.fetchCards(apiPath);
+    },
   },
 
   created() {
@@ -62,7 +69,7 @@ export default {
 <template>
   <AppHeader />
 
-  <BaseSelect />
+  <BaseSelect @form-submit="selectArchetype" />
 
   <MainContent @go-prev-page="prevPage()" @go-next-page="nextPage()" />
 </template>

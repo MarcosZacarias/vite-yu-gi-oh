@@ -10,8 +10,11 @@ export default {
   data() {
     return {
       store,
+      archetypeSelect: "",
     };
   },
+
+  emits: ["form-submit"],
 
   methods: {
     fetchArchetypes(apiPath) {
@@ -30,19 +33,23 @@ export default {
 
 <template>
   <div class="container">
-    <select
-      class="form-select mb-3 archetype-select"
-      aria-label="Default select example"
-    >
-      <option selected>Select archetype</option>
-      <option
-        v-for="archetype in store.yugiArchetypes"
-        :key="archetype.archetype_name"
-        :value="archetype.archetype_name"
+    <form>
+      <select
+        v-model="archetypeSelect"
+        class="form-select mb-3 archetype-select"
+        aria-label="Default select example"
       >
-        {{ archetype.archetype_name }}
-      </option>
-    </select>
+        <option selected>Select archetype</option>
+        <option
+          v-for="archetype in store.yugiArchetypes"
+          :key="archetype.archetype_name"
+          :value="archetype.archetype_name"
+          @click="$emit(`form-submit`, archetypeSelect)"
+        >
+          {{ archetype.archetype_name }}
+        </option>
+      </select>
+    </form>
   </div>
 </template>
 
